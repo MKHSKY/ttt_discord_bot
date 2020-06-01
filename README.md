@@ -17,7 +17,20 @@ If you need a step-by-step tutorial, follow my [guide at steam](http://steamcomm
 
 ### Prerequisites
 - You have to have allready installed a Garry's Mod Server with the TTT Gamemode
-- You must have [Nodejs](https://nodejs.org) installed
+- You must have [Nodejs](https://nodejs.org) or Docker installed
+
+### Installation (Docker)
+Follow the steps from the manual installation, but skip the first part, then start the docker container afterwards with the given parameters
+
+```bash
+docker run \
+   -e DISCORD_TOKEN=<Token>
+   -e DISCORD_GUILD=<Server ID>
+   -e DISCORD_CHANNEL=<Discord Channel ID>
+   -e SERVER_PORT=<Server Port>
+```
+
+### Installation (Manual)
 
 ### Installation
 1. Clone this repository (to e.g. your home folder) and install the requirements

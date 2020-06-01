@@ -133,15 +133,16 @@ function commonRoundState()
   -- Round state could not be determined
   return -1
 end
-
 hook.Add("PlayerSay", "ttt_discord_bot_PlayerSay", function(ply,msg)
-  if (string.sub(msg,1,9) != '!discord ') then return end
-  tag = string.sub(msg,10)
-  tag_utf8 = ""
+	if (string.sub(msg,1,9) != '!discord ') then return end
 
-  for p, c in utf8.codes(tag) do
-	tag_utf8 = string.Trim(tag_utf8.." "..c)
-  end
+	tag = string.sub(msg,10)
+	tag_utf8 = ""
+
+	for p, c in utf8.codes(tag) do
+	  tag_utf8 = string.Trim(tag_utf8.." "..c)
+	end
+	
 	GET("connect",{tag=tag_utf8},function(res)
 		if (res.answer == 0) then ply:PrintMessage(HUD_PRINTTALK,"["..GetConVar("discordbot_name"):GetString().."] ".."No guilde member with a discord tag like '"..tag.."' found.") end
 		if (res.answer == 1) then ply:PrintMessage(HUD_PRINTTALK,"["..GetConVar("discordbot_name"):GetString().."] ".."Found more than one user with a discord tag like '"..tag.."'. Please specify!") end
@@ -151,6 +152,7 @@ hook.Add("PlayerSay", "ttt_discord_bot_PlayerSay", function(ply,msg)
 			saveIDs()
 		end
 	end)
+	
 	return ""
 end)
 
